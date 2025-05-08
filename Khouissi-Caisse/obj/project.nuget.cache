@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "huKAYWLw7UI=",
+  "success": true,
+  "projectFilePath": "c:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.4\\microsoft.extensions.dependencyinjection.9.0.4.nupkg.sha512",
+    "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.4\\microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

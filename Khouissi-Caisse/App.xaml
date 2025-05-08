@@ -1,0 +1,95 @@
+﻿<Application x:Class="Khouissi_Caisse.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Khouissi_Caisse"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Other resource dictionaries can be added here -->
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Configure default FlowDirection for RTL support -->
+            <FlowDirection x:Key="DefaultFlowDirection">RightToLeft</FlowDirection>
+
+            <!-- Define fonts for Arabic text -->
+            <FontFamily x:Key="ArabicFontFamily">Traditional Arabic, Arabic Typesetting, Segoe UI, Tahoma</FontFamily>
+
+            <!-- Base style for all Windows -->
+            <Style TargetType="{x:Type Window}">
+                <Setter Property="FlowDirection"
+                        Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource ArabicFontFamily}"/>
+                <Setter Property="FontSize"
+                        Value="14"/>
+            </Style>
+
+            <!-- Base style for TextBlock -->
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FlowDirection"
+                        Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource ArabicFontFamily}"/>
+            </Style>
+
+            <!-- Base style for TextBox -->
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="FlowDirection"
+                        Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource ArabicFontFamily}"/>
+                <Setter Property="Padding"
+                        Value="5,3"/>
+            </Style>
+
+            <!-- Base style for Button -->
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="FlowDirection"
+                        Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource ArabicFontFamily}"/>
+                <Setter Property="Padding"
+                        Value="15,5"/>
+                <Setter Property="Margin"
+                        Value="5"/>
+            </Style>
+
+            <!-- Base style for Label -->
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="FlowDirection"
+                        Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource ArabicFontFamily}"/>
+            </Style>
+
+            <!-- Base style for ComboBox -->
+            <Style TargetType="{x:Type ComboBox}">
+                <Setter Property="FlowDirection"
+                        Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource ArabicFontFamily}"/>
+                <Setter Property="Padding"
+                        Value="5,3"/>
+            </Style>
+            
+            <!-- Localized Strings -->
+            <system:String x:Key="AppTitle">نظام إدارة الصندوق</system:String>
+            <system:String x:Key="Login">تسجيل الدخول</system:String>
+            <system:String x:Key="Cancel">إلغاء</system:String>
+            <system:String x:Key="Username">اسم المستخدم</system:String>
+            <system:String x:Key="Password">كلمة المرور</system:String>
+            <system:String x:Key="RememberMe">تذكرني</system:String>
+            <system:String x:Key="InvalidCredentials">اسم المستخدم أو كلمة المرور غير صحيحة</system:String>
+            <system:String x:Key="Logout">تسجيل الخروج</system:String>
+            <system:String x:Key="GuestUser">مستخدم غير مسجل</system:String>
+            <system:String x:Key="Home">الرئيسية</system:String>
+            <system:String x:Key="Members">الأعضاء</system:String>
+            <system:String x:Key="Subscriptions">الاشتراكات</system:String>
+            <system:String x:Key="Expenses">المصروفات</system:String>
+            <system:String x:Key="Reports">التقارير</system:String>
+            <system:String x:Key="Settings">الإعدادات</system:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
