@@ -5,30 +5,30 @@ This file lists the tasks for the AI agent, prioritized according to the UI-firs
 ## Phase 1: Foundational Setup & Core UI Shell (Arabic Focus)
 
 - **Project Setup & Infrastructure (from Project-Todo.md - Phase 1):**
-  - [ ] Set up Arabic localization and RTL support
-    - [ ] Create Arabic resource files (`*.resx`) for common UI strings (e.g., Login, Username, Password, Cancel, OK).
-    - [ ] Configure default `FlowDirection` to `RightToLeft` in `App.xaml` or base window/page styles.
-    - [ ] Set up appropriate fonts for Arabic text (e.g., "Traditional Arabic", "Arabic Typesetting"). Ensure they are embedded or commonly available.
-    - [ ] Verify: Configure culture to use Western digits (0-9) (already marked `[x]` in `Project-Todo.md`, but confirm effect).
+  - [x] Set up Arabic localization and RTL support
+    - [x] Create Arabic resource files (`*.resx`) for common UI strings (e.g., Login, Username, Password, Cancel, OK).
+    - [x] Configure default `FlowDirection` to `RightToLeft` in `App.xaml` or base window/page styles.
+    - [x] Set up appropriate fonts for Arabic text (e.g., "Traditional Arabic", "Arabic Typesetting"). Ensure they are embedded or commonly available.
+    - [x] Verify: Configure culture to use Western digits (0-9) (already marked `[x]` in `Project-Todo.md`, but confirm effect).
   - [ ] Create XML configuration system (basic structure for app settings if not already robust).
 - **UI Development (from Project-Todo.md - Phase 4):**
-  - [ ] Design and implement main application shell with RTL support.
-    - Create a `MainWindow.xaml` or equivalent shell.
-    - Include areas for navigation and content display.
-    - Ensure all shell elements respect RTL flow.
-  - [ ] Create login view (Arabic).
-    - Design `LoginView.xaml` with fields for Username, Password, and a Login button.
-    - All text literals must be in Arabic (sourced from `.resx` files).
-    - Layout must be RTL.
+  - [x] Design and implement main application shell with RTL support.
+    - [x] Create a `MainWindow.xaml` or equivalent shell.
+    - [x] Include areas for navigation and content display.
+    - [x] Ensure all shell elements respect RTL flow.
+  - [x] Create login view (Arabic).
+    - [x] Design `LoginView.xaml` with fields for Username, Password, and a Login button.
+    - [x] All text literals must be in Arabic (sourced from `.resx` files).
+    - [x] Layout must be RTL.
 - **Mock Services:**
-  - [ ] Create `MockUserService` implementing `IUserService`.
-    - Include methods like `AuthenticateAsync(string username, string password)` returning a mock `User` object or boolean.
-    - This mock will be used by the `LoginViewModel`.
+  - [x] Create `MockUserService` implementing `IUserService`.
+    - [x] Include methods like `AuthenticateAsync(string username, string password)` returning a mock `User` object or boolean.
+    - [x] This mock will be used by the `LoginViewModel`.
 - **ViewModel for Login:**
-  - [ ] Create `LoginViewModel`.
-    - Implement properties for Username, Password.
-    - Implement `LoginCommand`.
-    - Inject `IUserService` (initially the `MockUserService`).
+  - [x] Create `LoginViewModel`.
+    - [x] Implement properties for Username, Password.
+    - [x] Implement `LoginCommand`.
+    - [x] Inject `IUserService` (initially the `MockUserService`).
 
 ## Phase 2: Member Management UI & Mocked Logic
 
@@ -82,7 +82,7 @@ This file lists the tasks for the AI agent, prioritized according to the UI-firs
   - [ ] (Verify/Complete) Implement Member entity model (Name, surname, birth date, phone, address, photo, Family relationship linking capability).
   - [ ] (Verify/Complete) Implement Subscription entity model (Monthly payment tracking, Default amount, Advance payment support).
   - [ ] (Verify/Complete) Implement Expense entity model (Amount, beneficiary, purpose).
-  - [ ] (Verify/Complete) Implement User entity model (Username, password hash, role).
+  - [x] (Verify/Complete) Implement User entity model (Username, password hash, role).
   - [ ] (Verify/Complete) Implement ApplicationSettings entity model (Default subscription amount, backup settings).
   - [ ] (Verify/Complete) Create base Repository interface and implementation (`IRepository<T>`, `Repository<T>`).
   - [ ] (Verify/Complete) Implement specific repositories:
@@ -92,7 +92,7 @@ This file lists the tasks for the AI agent, prioritized according to the UI-firs
     - [ ] (Verify/Complete) `UserRepository`.
     - [ ] (Verify/Complete) `ApplicationSettingsRepository`.
 - **Business Services (from Project-Todo.md - Phase 3 - Implement/Refine):**
-  - [ ] (Implement/Refine) `UserService` for authentication (User authentication, Role-based authorization, Password management). Connect to `UserRepository`.
+  - [x] (Implement/Refine) `UserService` for authentication (User authentication, Role-based authorization, Password management). Connect to `UserRepository`.
   - [ ] (Refine) `MemberService` for member management (CRUD, Search, Family relationship management). Connect to `MemberRepository`.
   - [ ] (Refine) `SubscriptionService` (Record monthly subscriptions, Handle advance payments, Calculate subscription status). Connect to `SubscriptionRepository`.
   - [ ] (Refine) `ExpenseService` (Record fund expenses, Categorize expenses). Connect to `ExpenseRepository`.
@@ -101,7 +101,7 @@ This file lists the tasks for the AI agent, prioritized according to the UI-firs
   - [ ] Test all UI views with real services and database interaction.
   - [ ] Resolve any issues arising from integration.
 - **Authentication System (from Project-Todo.md - Phase 1):**
-  - [ ] Design and implement authentication system (this will now use the real `UserService`).
+  - [x] Design and implement authentication system (this will now use the real `UserService`).
 
 ## Phase 5: Reporting, Configuration & Advanced Features
 
