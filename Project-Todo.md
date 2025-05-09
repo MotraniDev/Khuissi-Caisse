@@ -51,10 +51,12 @@ This file tracks the progress of development tasks for the نظام إدارة �
   - [x] User authentication.
   - [x] Role-based authorization.
   - [x] Password management.
-- [ ] Create MemberService for member management
-  - [ ] CRUD operations for members.
-  - [ ] Search functionality.
-  - [ ] Family relationship management.
+- [x] Create MemberService for member management
+  - [x] Define interface with core operations.
+  - [x] Implement mock service for UI development.
+  - [ ] Implement full CRUD operations for members.
+  - [ ] Add search functionality.
+  - [ ] Implement family relationship management.
 - [ ] Create SubscriptionService for subscription management
   - [ ] Record monthly subscriptions.
   - [ ] Handle advance payments.
@@ -78,7 +80,8 @@ This file tracks the progress of development tasks for the نظام إدارة �
   - [x] All text literals in Arabic (sourced from `.resx` files).
   - [x] Layout in RTL.
 - [ ] Implement member management views
-  - [ ] Member list view with Arabic search support.
+  - [x] Initial Member list view setup.
+  - [ ] Complete Member list view with Arabic search support.
   - [ ] Member details view in Arabic.
   - [ ] Member edit view with Arabic validation.
 - [ ] Develop subscription management views

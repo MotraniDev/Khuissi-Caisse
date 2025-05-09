@@ -28,6 +28,12 @@ All notable changes to the project will be documented in this file.
   - Implemented generic repository pattern (IRepository<T> and Repository<T>)
   - Added specific repositories for each entity with additional methods
   - Set up database context with relationships between entities
+  
+- feat(member): Started member management implementation
+  - Created IMemberService interface with core member management operations
+  - Implemented MockMemberService for UI development
+  - Added ActiveStatusConverter for visual member status representation
+  - Created initial MemberListView and MemberListViewModel
 
 ### Changed
 
