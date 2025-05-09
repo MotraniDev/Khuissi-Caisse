@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\lenovo\Documents\src\Khuissi-Caisse\Khouissi-Caisse\App.xaml
-3-401798684
+51418797371
 
-30831569413
-216-896626730
-MainWindow.xaml;Views\LoginView.xaml;Views\MemberListView.xaml;
+39-2087384406
+217468610036
+MainWindow.xaml;Views\LoginView.xaml;Views\MemberDetailsView.xaml;Views\MemberEditView.xaml;Views\MemberListView.xaml;
 
 False
 

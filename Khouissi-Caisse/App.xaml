@@ -4,122 +4,138 @@
              xmlns:local="clr-namespace:Khouissi_Caisse"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
-        <Application.Resources>
-                <ResourceDictionary>
-                        <ResourceDictionary.MergedDictionaries>
-                                <!-- Other resource dictionaries can be added here -->
-                        </ResourceDictionary.MergedDictionaries>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Other resource dictionaries can be added here -->
+            </ResourceDictionary.MergedDictionaries>
 
-                        <!-- Configure default FlowDirection for RTL support -->
-                        <FlowDirection x:Key="DefaultFlowDirection">RightToLeft</FlowDirection>
+            <!-- Register the custom font -->
+            <FontFamily x:Key="AlarabiyaFont">pack://application:,,,/fonts/#Alarabiya</FontFamily>
 
-                        <!-- Define fonts for Arabic text -->
-                        <FontFamily x:Key="ArabicFontFamily">Traditional Arabic, Arabic Typesetting, Segoe UI, Tahoma</FontFamily>
+            <!-- Configure default FlowDirection for RTL support -->
+            <FlowDirection x:Key="DefaultFlowDirection">RightToLeft</FlowDirection>
 
-                        <!-- Base style for all Windows -->
-                        <Style TargetType="{x:Type Window}">
-                                <Setter Property="FlowDirection"
-                                        Value="{StaticResource DefaultFlowDirection}"/>
-                                <Setter Property="FontFamily"
-                                        Value="{StaticResource ArabicFontFamily}"/>
-                                <Setter Property="FontSize"
-                                        Value="14"/>
-                        </Style>
+            <!-- Define fonts for Arabic text -->
+            <FontFamily x:Key="ArabicFontFamily">Traditional Arabic, Arabic Typesetting, Segoe UI, Tahoma</FontFamily>
 
-                        <!-- Base style for TextBlock -->
-                        <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="FlowDirection"
-                                        Value="{StaticResource DefaultFlowDirection}"/>
-                                <Setter Property="FontFamily"
-                                        Value="{StaticResource ArabicFontFamily}"/>
-                        </Style>
+            <!-- Base style for all Windows -->
+            <Style TargetType="{x:Type Window}">
+                <Setter Property="FlowDirection"
+                        Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource ArabicFontFamily}"/>
+                <Setter Property="FontSize"
+                        Value="14"/>
+            </Style>
 
-                        <!-- Base style for TextBox -->
-                        <Style TargetType="{x:Type TextBox}">
-                                <Setter Property="FlowDirection"
-                                        Value="{StaticResource DefaultFlowDirection}"/>
-                                <Setter Property="FontFamily"
-                                        Value="{StaticResource ArabicFontFamily}"/>
-                                <Setter Property="Padding"
-                                        Value="5,3"/>
-                        </Style>
+            <!-- Base style for TextBlock -->
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FlowDirection" Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily" Value="{StaticResource AlarabiyaFont}"/>
+            </Style>
 
-                        <!-- Base style for Button -->
-                        <Style TargetType="{x:Type Button}">
-                                <Setter Property="FlowDirection"
-                                        Value="{StaticResource DefaultFlowDirection}"/>
-                                <Setter Property="FontFamily"
-                                        Value="{StaticResource ArabicFontFamily}"/>
-                                <Setter Property="Padding"
-                                        Value="15,5"/>
-                                <Setter Property="Margin"
-                                        Value="5"/>
-                        </Style>
+            <!-- Base style for TextBox -->
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="FlowDirection" Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily" Value="{StaticResource AlarabiyaFont}"/>
+                <Setter Property="Padding" Value="5,3"/>
+            </Style>
 
-                        <!-- Base style for Label -->
-                        <Style TargetType="{x:Type Label}">
-                                <Setter Property="FlowDirection"
-                                        Value="{StaticResource DefaultFlowDirection}"/>
-                                <Setter Property="FontFamily"
-                                        Value="{StaticResource ArabicFontFamily}"/>
-                        </Style>
+            <!-- Base style for Button -->
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="FlowDirection" Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily" Value="{StaticResource AlarabiyaFont}"/>
+                <Setter Property="Padding" Value="15,5"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
 
-                        <!-- Base style for ComboBox -->
-                        <Style TargetType="{x:Type ComboBox}">
-                                <Setter Property="FlowDirection"
-                                        Value="{StaticResource DefaultFlowDirection}"/>
-                                <Setter Property="FontFamily"
-                                        Value="{StaticResource ArabicFontFamily}"/>
-                                <Setter Property="Padding"
-                                        Value="5,3"/>
-                        </Style>
-                        <!-- Localized Strings -->
-                        <system:String x:Key="AppTitle">نظام إدارة الصندوق</system:String>
+            <!-- Base style for Label -->
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="FlowDirection" Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily" Value="{StaticResource AlarabiyaFont}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            </Style>
 
-                        <!-- Authentication -->
-                        <system:String x:Key="Login">تسجيل الدخول</system:String>
-                        <system:String x:Key="Cancel">إلغاء</system:String>
-                        <system:String x:Key="Username">اسم المستخدم</system:String>
-                        <system:String x:Key="Password">كلمة المرور</system:String>
-                        <system:String x:Key="RememberMe">تذكرني</system:String>
-                        <system:String x:Key="InvalidCredentials">اسم المستخدم أو كلمة المرور غير صحيحة</system:String>
-                        <system:String x:Key="Logout">تسجيل الخروج</system:String>
-                        <system:String x:Key="GuestUser">مستخدم غير مسجل</system:String>
+            <!-- Base style for ComboBox -->
+            <Style TargetType="{x:Type ComboBox}">
+                <Setter Property="FlowDirection" Value="{StaticResource DefaultFlowDirection}"/>
+                <Setter Property="FontFamily" Value="{StaticResource ArabicFontFamily}"/>
+                <Setter Property="Padding" Value="5,3"/>
+            </Style>
 
-                        <!-- Navigation -->
-                        <system:String x:Key="Home">الرئيسية</system:String>
-                        <system:String x:Key="Members">الأعضاء</system:String>
-                        <system:String x:Key="Subscriptions">الاشتراكات</system:String>
-                        <system:String x:Key="Expenses">المصروفات</system:String>
-                        <system:String x:Key="Reports">التقارير</system:String>
+            <!-- Set sidebar menu items style -->
+            <Style x:Key="SidebarMenuItemStyle" TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource AlarabiyaFont}" />
+                <Setter Property="FlowDirection" Value="RightToLeft" />
+                <Setter Property="HorizontalContentAlignment" Value="Right" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="Margin" Value="0,2" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
 
-                        <!-- Member Management -->
-                        <system:String x:Key="MembersList">قائمة الأعضاء</system:String>
-                        <system:String x:Key="AddMember">إضافة عضو جديد</system:String>
-                        <system:String x:Key="EditMember">تعديل العضو</system:String>
-                        <system:String x:Key="ViewDetails">عرض التفاصيل</system:String>
-                        <system:String x:Key="SearchMembers">البحث عن أعضاء (الاسم، الهاتف، العنوان)...</system:String>
-                        <system:String x:Key="FirstName">الاسم</system:String>
-                        <system:String x:Key="LastName">اللقب</system:String>
-                        <system:String x:Key="Phone">الهاتف</system:String>
-                        <system:String x:Key="Address">العنوان</system:String>
-                        <system:String x:Key="BirthDate">تاريخ الميلاد</system:String>
-                        <system:String x:Key="JoinDate">تاريخ الانضمام</system:String>
-                        <system:String x:Key="Status">الحالة</system:String>
-                        <system:String x:Key="Notes">ملاحظات</system:String>
-                        <system:String x:Key="Photo">الصورة</system:String>
-                        <system:String x:Key="FamilyMembers">أفراد العائلة</system:String>
-                        <system:String x:Key="ParentMember">العضو الرئيسي</system:String>
-                        <system:String x:Key="Relationship">العلاقة</system:String>
+            <!-- Set sidebar label style -->
+            <Style x:Key="SidebarLabelStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource AlarabiyaFont}" />
+                <Setter Property="FlowDirection" Value="RightToLeft" />
+                <Setter Property="HorizontalContentAlignment" Value="Right" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="Margin" Value="0,2" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
 
-                        <!-- Common Actions -->
-                        <system:String x:Key="Save">حفظ</system:String>
-                        <system:String x:Key="Delete">حذف</system:String>
-                        <system:String x:Key="Edit">تعديل</system:String>
-                        <system:String x:Key="Refresh">تحديث</system:String>
-                        <system:String x:Key="Search">بحث</system:String>
-                        <system:String x:Key="Loading">جار التحميل...</system:String>
-                        <system:String x:Key="Settings">الإعدادات</system:String>
-                </ResourceDictionary>
-        </Application.Resources>
+            <!-- Localized Strings -->
+            <system:String x:Key="AppTitle">نظام إدارة الصندوق</system:String>
+
+            <!-- Authentication -->
+            <system:String x:Key="Login">تسجيل الدخول</system:String>
+            <system:String x:Key="Cancel">إلغاء</system:String>
+            <system:String x:Key="Username">اسم المستخدم</system:String>
+            <system:String x:Key="Password">كلمة المرور</system:String>
+            <system:String x:Key="RememberMe">تذكرني</system:String>
+            <system:String x:Key="InvalidCredentials">اسم المستخدم أو كلمة المرور غير صحيحة</system:String>
+            <system:String x:Key="Logout">تسجيل الخروج</system:String>
+            <system:String x:Key="GuestUser">مستخدم غير مسجل</system:String>
+
+            <!-- Navigation -->
+            <system:String x:Key="Home">الرئيسية</system:String>
+            <system:String x:Key="Members">الأعضاء</system:String>
+            <system:String x:Key="Subscriptions">الاشتراكات</system:String>
+            <system:String x:Key="Expenses">المصروفات</system:String>
+            <system:String x:Key="Reports">التقارير</system:String>
+
+            <!-- Member Management -->
+            <system:String x:Key="MembersList">قائمة الأعضاء</system:String>
+            <system:String x:Key="AddMember">إضافة عضو جديد</system:String>
+            <system:String x:Key="EditMember">تعديل العضو</system:String>
+            <system:String x:Key="ViewDetails">عرض التفاصيل</system:String>
+            <system:String x:Key="SearchMembers">البحث عن أعضاء (الاسم، الهاتف، العنوان)...</system:String>
+            <system:String x:Key="FirstName">الاسم</system:String>
+            <system:String x:Key="LastName">اللقب</system:String>
+            <system:String x:Key="Phone">الهاتف</system:String>
+            <system:String x:Key="Address">العنوان</system:String>
+            <system:String x:Key="BirthDate">تاريخ الميلاد</system:String>
+            <system:String x:Key="JoinDate">تاريخ الانضمام</system:String>
+            <system:String x:Key="Status">الحالة</system:String>
+            <system:String x:Key="Notes">ملاحظات</system:String>
+            <system:String x:Key="Photo">الصورة</system:String>
+            <system:String x:Key="FamilyMembers">أفراد العائلة</system:String>
+            <system:String x:Key="ParentMember">العضو الرئيسي</system:String>
+            <system:String x:Key="Relationship">العلاقة</system:String>
+
+            <!-- Common Actions -->
+            <system:String x:Key="Save">حفظ</system:String>
+            <system:String x:Key="Delete">حذف</system:String>
+            <system:String x:Key="Edit">تعديل</system:String>
+            <system:String x:Key="Refresh">تحديث</system:String>
+            <system:String x:Key="Search">بحث</system:String>
+            <system:String x:Key="Loading">جار التحميل...</system:String>
+            <system:String x:Key="Settings">الإعدادات</system:String>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

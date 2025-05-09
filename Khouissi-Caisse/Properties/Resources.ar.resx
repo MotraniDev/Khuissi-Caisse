@@ -86,8 +86,121 @@
   </data>
   <data name="LoginButton" xml:space="preserve">
     <value>دخول</value>
-  </data>
-  <data name="InvalidCredentials" xml:space="preserve">
+  </data>  <data name="InvalidCredentials" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
+  </data>
+  
+  <!-- Member List View -->
+  <data name="MembersList" xml:space="preserve">
+    <value>قائمة الأعضاء</value>
+  </data>
+  <data name="SearchMembers" xml:space="preserve">
+    <value>البحث عن الأعضاء...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="AddMember" xml:space="preserve">
+    <value>إضافة عضو</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>اللقب</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="JoinDate" xml:space="preserve">
+    <value>تاريخ الانضمام</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>الحالة</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>نشط</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>غير نشط</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>عرض التفاصيل</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>جاري التحميل...</value>
+  </data>
+  
+  <!-- Member Details View -->
+  <data name="MemberDetails" xml:space="preserve">
+    <value>تفاصيل العضو</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>الصورة</value>
+  </data>
+  <data name="FamilyRelationships" xml:space="preserve">
+    <value>العلاقات العائلية</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="UploadPhoto" xml:space="preserve">
+    <value>تحميل صورة</value>
+  </data>
+  
+  <!-- Member Edit View -->
+  <data name="EditMember" xml:space="preserve">
+    <value>تعديل العضو</value>
+  </data>
+  <data name="CreateMember" xml:space="preserve">
+    <value>إضافة عضو جديد</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>فشل الحفظ</value>
+  </data>
+  <data name="SaveSuccess" xml:space="preserve">
+    <value>تم الحفظ بنجاح</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>هذا الحقل مطلوب</value>
+  </data>
+  <data name="InvalidPhoneNumber" xml:space="preserve">
+    <value>رقم هاتف غير صحيح</value>
+  </data>
+  <data name="InvalidDate" xml:space="preserve">
+    <value>تاريخ غير صحيح</value>
+  </data>
+  <data name="MemberSaved" xml:space="preserve">
+    <value>تم حفظ بيانات العضو بنجاح</value>
+  </data>
+  <data name="MemberDeleted" xml:space="preserve">
+    <value>تم حذف العضو بنجاح</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>هل أنت متأكد من حذف هذا العضو؟</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
   </data>
 </root>

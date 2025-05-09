@@ -6,6 +6,8 @@ using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
 using Khouissi_Caisse.Services;
 using Khouissi_Caisse.ViewModels;
+using Khouissi_Caisse.Services.Interfaces;
+using Khouissi_Caisse.Views; // Add this for View types
 
 namespace Khouissi_Caisse;
 
@@ -19,6 +21,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        // Your startup code here
 
         // Set Arabic culture with Western digits (0-9)
         var arabicCulture = new CultureInfo("ar");
@@ -40,15 +43,33 @@ public partial class App : Application
     /// Configures the application's dependency injection container
     /// </summary>
     private void ConfigureServices(IServiceCollection services)
-    {        // Register services
+    {          // Register services        
         services.AddSingleton<IUserService, MockUserService>();
-        services.AddSingleton<IMemberService, MockMemberService>();
+        services.AddSingleton<ISubscriptionService, MockSubscriptionService>();
+        services.AddSingleton<Khouissi_Caisse.Services.Interfaces.IMemberService, MockMemberService>();
+        
+        // NavigationService registration
+        services.AddSingleton<INavigationService, NavigationService>(sp =>
+        {
+            var navigationService = new NavigationService(sp);
+            // Register views with the navigation service
+            // Ensure these view classes exist in the Khouissi_Caisse.Views namespace
+            navigationService.RegisterView(nameof(LoginViewModel), typeof(LoginView)); // Assuming LoginView exists
+            navigationService.RegisterView(nameof(MemberListViewModel), typeof(MemberListView));
+            navigationService.RegisterView(nameof(MemberDetailsViewModel), typeof(MemberDetailsView));
+            navigationService.RegisterView(nameof(MemberEditViewModel), typeof(MemberEditView));
+            // Add other view registrations here
+            return navigationService;
+        });
 
-        // In the future, we'll register other services like this:
-        // services.AddSingleton<ISubscriptionService, MockSubscriptionService>();
-        // services.AddSingleton<IExpenseService, MockExpenseService>();        // Register ViewModels
+        // Register ViewModels
         services.AddTransient<LoginViewModel>();
         services.AddTransient<MemberListViewModel>();
+        services.AddTransient<MemberDetailsViewModel>();
+        services.AddTransient<MemberEditViewModel>();
+
+        // In the future, we'll register other services like this:
+        // services.AddSingleton<IExpenseService, MockExpenseService>();
 
         // In the future, we'll register other ViewModels like this:
         // services.AddTransient<MemberDetailsViewModel>();

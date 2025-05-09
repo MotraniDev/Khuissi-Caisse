@@ -1,4 +1,4 @@
-# نظام إدارة الصندوق - Changelog
+# Changelog
 
 All notable changes to the project will be documented in this file.
 
@@ -28,25 +28,35 @@ All notable changes to the project will be documented in this file.
   - Implemented generic repository pattern (IRepository<T> and Repository<T>)
   - Added specific repositories for each entity with additional methods
   - Set up database context with relationships between entities
-  
 - feat(member): Started member management implementation
   - Created IMemberService interface with core member management operations
   - Implemented MockMemberService for UI development
   - Added ActiveStatusConverter for visual member status representation
   - Created initial MemberListView and MemberListViewModel
-  
-- feat(member): Started member management implementation
-  - Created IMemberService interface with core member management operations
-  - Implemented MockMemberService for UI development
-  - Added ActiveStatusConverter for visual member status representation
-  - Created initial MemberListView and MemberListViewModel
+
+- Implemented Member management UI components:
+  - MemberDetailsView and ViewModel to display member information
+  - MemberEditView and ViewModel for adding/editing member data
+  - Family relationship management in member editing
+- Created MockMemberService implementing IMemberService interface
+- Created MockSubscriptionService implementing ISubscriptionService interface
+- Added ActiveStatusConverter for displaying member status
+- Enhanced Member model with FullName property and Clone method
+- Added FamilyRelationship model for representing family connections
+
+- feat(ui): Updated MainWindow.xaml navigation buttons and user info section
+  - Added Arabic labels for navigation buttons
+  - Styled user info section with dynamic resource for login button
 
 ### Changed
 
 - Updated MainWindow.xaml to integrate the login functionality
 - Enhanced App.xaml to include Arabic string resources and default RTL styles
+- Updated App.xaml.cs to register new services and ViewModels
+- Updated Project-Todo.md to mark completed tasks
 
 ### Fixed
 
 - Fixed LoginView.xaml.cs to correctly handle PasswordBox binding
 - Ensured proper Arabic text display with Western digits (0-9)
+- Fixed RTL layout issues in member management views

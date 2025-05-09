@@ -91,31 +91,13 @@
                                 <!-- Navigation Buttons -->
                                 <ScrollViewer Grid.Row="1"
                                               VerticalScrollBarVisibility="Auto">
-                                        <StackPanel>
-                                                <Button x:Name="HomeButton"
-                                                        Content="{DynamicResource Home}"
-                                                        Style="{StaticResource NavButtonStyle}"
-                                                        Click="HomeButton_Click"/>
-                                                <Button x:Name="MembersButton"
-                                                        Content="{DynamicResource Members}"
-                                                        Style="{StaticResource NavButtonStyle}"
-                                                        Click="MembersButton_Click"/>
-                                                <Button x:Name="SubscriptionsButton"
-                                                        Content="{DynamicResource Subscriptions}"
-                                                        Style="{StaticResource NavButtonStyle}"
-                                                        Click="SubscriptionsButton_Click"/>
-                                                <Button x:Name="ExpensesButton"
-                                                        Content="{DynamicResource Expenses}"
-                                                        Style="{StaticResource NavButtonStyle}"
-                                                        Click="ExpensesButton_Click"/>
-                                                <Button x:Name="ReportsButton"
-                                                        Content="{DynamicResource Reports}"
-                                                        Style="{StaticResource NavButtonStyle}"
-                                                        Click="ReportsButton_Click"/>
-                                                <Button x:Name="SettingsButton"
-                                                        Content="{DynamicResource Settings}"
-                                                        Style="{StaticResource NavButtonStyle}"
-                                                        Click="SettingsButton_Click"/>
+                                        <StackPanel  Orientation="Vertical" Grid.Row="1">
+                                                <Button BorderThickness="0" Background="#2c3e50" x:Name="HomeButton" Content="الرئيسية" Click="HomeButton_Click"/>
+                                                <Button BorderThickness="0" Background="#2c3e50" x:Name="MembersButton" Content="الأعضاء" Click="MembersButton_Click"/>
+                                                <Button BorderThickness="0" Background="#2c3e50" x:Name="SubscriptionsButton" Content="الاشتراكات" Click="SubscriptionsButton_Click"/>
+                                                <Button BorderThickness="0" Background="#2c3e50" x:Name="ExpensesButton" Content="المصروفات" Click="ExpensesButton_Click"/>
+                                                <Button BorderThickness="0" Background="#2c3e50" x:Name="ReportsButton" Content="التقارير" Click="ReportsButton_Click"/>
+                                                <Button BorderThickness="0" Background="#2c3e50" x:Name="SettingsButton" Content="الإعدادات" Click="SettingsButton_Click"/>
                                         </StackPanel>
                                 </ScrollViewer>
 
@@ -140,13 +122,13 @@
                                         </StackPanel>
                                 </Border>
                         </Grid>
-                </Border>
-                <!-- Content Area -->
+                </Border>                <!-- Content Area -->
                 <Border Grid.Column="0"
                         Background="#ecf0f1"
                         Padding="10">
                         <ContentControl x:Name="MainContent">
                                 <!-- Content will be loaded here -->
+                                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
                         </ContentControl>
                 </Border>
         </Grid>

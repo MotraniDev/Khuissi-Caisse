@@ -1,288 +1,154 @@
 using Khouissi_Caisse.Models;
+using Khouissi_Caisse.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Khouissi_Caisse.Services;
-
-/// <summary>
-/// Mock implementation of IMemberService for testing and UI development
-/// </summary>
-public class MockMemberService : IMemberService
+namespace Khouissi_Caisse.Services
 {
-    private readonly List<Member> _members;
-    private int _nextId = 1;
-
-    /// <summary>
-    /// Creates a new instance of MockMemberService with sample data
-    /// </summary>
-    public MockMemberService()
+    public class MockMemberService : IMemberService
     {
-        // Initialize with some test members
-        _members = new List<Member>
+        private List<Member> _members;
+        private List<FamilyRelationship> _relationships;
+        private int _nextMemberId = 1;
+        private int _nextRelationshipId = 1;
+
+        public MockMemberService()
         {
-            new Member
+            _members = new List<Member>
             {
-                Id = _nextId++,
-                FirstName = "أحمد",
-                LastName = "محمد",
-                BirthDate = new DateTime(1980, 5, 15),
-                Phone = "0555123456",
-                Address = "شارع الاستقلال، حي السلام، الجزائر",
-                JoinDate = DateTime.Now.AddMonths(-6),
-                IsActive = true
-            },
-            new Member
+                new Member { Id = _nextMemberId++, CIN = "CIN001", FirstName = "محمد", LastName = "أحمد", BirthDate = new DateTime(1985, 5, 15), Address = "شارع الجزائر رقم 25", Phone = "0555123456", IsActive = true, Notes = "عضو منذ 2018" },
+                new Member { Id = _nextMemberId++, CIN = "CIN002", FirstName = "فاطمة", LastName = "محمد", BirthDate = new DateTime(1990, 8, 22), Address = "شارع الأمير عبد القادر رقم 10", Phone = "0555789012", IsActive = true, Notes = "" },
+                new Member { Id = _nextMemberId++, CIN = "CIN003", FirstName = "خالد", LastName = "عمر", BirthDate = new DateTime(1975, 1, 3), Address = "حي النصر بناية 5", Phone = "0555345678", IsActive = false, Notes = "غير مشترك منذ 2023" }
+            };
+
+            _relationships = new List<FamilyRelationship>();
+        }
+
+        public Task<List<Member>> GetAllAsync()
+        {
+            return Task.FromResult(_members.Select(m => m.Clone()).ToList());
+        }
+
+        public Task<Member?> GetByIdAsync(int id)
+        {
+            var member = _members.FirstOrDefault(m => m.Id == id);
+            return Task.FromResult(member?.Clone());
+        }
+
+        public Task<Member> AddAsync(Member member)
+        {
+            if (member == null)
+                throw new ArgumentNullException(nameof(member));
+
+            member.Id = _nextMemberId++;
+            var newMemberClone = member.Clone();
+            _members.Add(newMemberClone);
+            return Task.FromResult(newMemberClone);
+        }
+
+        public Task<bool> UpdateAsync(Member member)
+        {
+            if (member == null)
+                throw new ArgumentNullException(nameof(member));
+
+            var existingMember = _members.FirstOrDefault(m => m.Id == member.Id);
+            if (existingMember != null)
             {
-                Id = _nextId++,
-                FirstName = "فاطمة",
-                LastName = "أحمد",
-                BirthDate = new DateTime(1985, 8, 22),
-                Phone = "0555789012",
-                Address = "شارع النصر، حي البدر، الجزائر",
-                JoinDate = DateTime.Now.AddMonths(-4),
-                IsActive = true
-            },
-            new Member
-            {
-                Id = _nextId++,
-                FirstName = "محمد",
-                LastName = "عبد الله",
-                BirthDate = new DateTime(1975, 3, 10),
-                Phone = "0555456789",
-                Address = "شارع الجزائر، حي النور، الجزائر",
-                JoinDate = DateTime.Now.AddMonths(-8),
-                IsActive = true
-            },
-            new Member
-            {
-                Id = _nextId++,
-                FirstName = "خديجة",
-                LastName = "علي",
-                BirthDate = new DateTime(1990, 11, 5),
-                Phone = "0555234567",
-                Address = "شارع الثورة، حي الهناء، الجزائر",
-                JoinDate = DateTime.Now.AddMonths(-2),
-                IsActive = true
+                var index = _members.IndexOf(existingMember);
+                _members[index] = member.Clone();
+                return Task.FromResult(true);
             }
-        };
-
-        // Create some family relationships
-        var parent = _members[0]; // Ahmed
-        var child1 = new Member
-        {
-            Id = _nextId++,
-            FirstName = "ياسر",
-            LastName = "أحمد",
-            BirthDate = new DateTime(2010, 4, 20),
-            Phone = "",
-            Address = parent.Address,
-            JoinDate = DateTime.Now.AddMonths(-6),
-            IsActive = true,
-            ParentMemberId = parent.Id,
-            ParentMember = parent,
-            RelationshipToParent = "ابن"
-        };
-        var child2 = new Member
-        {
-            Id = _nextId++,
-            FirstName = "ليلى",
-            LastName = "أحمد",
-            BirthDate = new DateTime(2012, 7, 15),
-            Phone = "",
-            Address = parent.Address,
-            JoinDate = DateTime.Now.AddMonths(-6),
-            IsActive = true,
-            ParentMemberId = parent.Id,
-            ParentMember = parent,
-            RelationshipToParent = "ابنة"
-        };
-        _members.Add(child1);
-        _members.Add(child2);
-
-        // Initialize the child collections
-        parent.ChildMembers = new List<Member> { child1, child2 };
-    }
-
-    /// <summary>
-    /// Gets all members
-    /// </summary>
-    public async Task<List<Member>> GetAllAsync()
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-        return _members.ToList();
-    }
-
-    /// <summary>
-    /// Searches for members by name
-    /// </summary>
-    public async Task<List<Member>> SearchAsync(string searchTerm)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-
-        if (string.IsNullOrEmpty(searchTerm))
-            return _members.ToList();
-
-        return _members
-            .Where(m =>
-                m.FirstName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                m.LastName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                m.Phone.Contains(searchTerm) ||
-                m.Address.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
-            .ToList();
-    }
-
-    /// <summary>
-    /// Gets a member by ID
-    /// </summary>
-    public async Task<Member?> GetByIdAsync(int id)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-        return _members.FirstOrDefault(m => m.Id == id);
-    }
-
-    /// <summary>
-    /// Adds a new member
-    /// </summary>
-    public async Task<Member> AddAsync(Member member)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-
-        // Assign an ID
-        member.Id = _nextId++;
-
-        // Set default join date if not provided
-        if (member.JoinDate == default)
-            member.JoinDate = DateTime.Now;
-
-        _members.Add(member);
-        return member;
-    }
-
-    /// <summary>
-    /// Updates an existing member
-    /// </summary>
-    public async Task<bool> UpdateAsync(Member member)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-
-        var existingMember = _members.FirstOrDefault(m => m.Id == member.Id);
-        if (existingMember == null)
-            return false;
-
-        // Update properties
-        existingMember.FirstName = member.FirstName;
-        existingMember.LastName = member.LastName;
-        existingMember.BirthDate = member.BirthDate;
-        existingMember.Phone = member.Phone;
-        existingMember.Address = member.Address;
-        existingMember.Photo = member.Photo;
-        existingMember.Notes = member.Notes;
-        existingMember.IsActive = member.IsActive;
-
-        return true;
-    }
-
-    /// <summary>
-    /// Deletes a member
-    /// </summary>
-    public async Task<bool> DeleteAsync(int id)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-
-        var member = _members.FirstOrDefault(m => m.Id == id);
-        if (member == null)
-            return false;
-
-        // First check if this member has child members
-        var childMembers = _members.Where(m => m.ParentMemberId == id).ToList();
-        foreach (var child in childMembers)
-        {
-            child.ParentMemberId = null;
-            child.ParentMember = null;
-            child.RelationshipToParent = string.Empty;
+            return Task.FromResult(false);
         }
 
-        // Remove the member
-        _members.Remove(member);
-        return true;
-    }
-
-    /// <summary>
-    /// Gets family members for a parent
-    /// </summary>
-    public async Task<List<Member>> GetFamilyMembersAsync(int parentId)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-
-        return _members
-            .Where(m => m.ParentMemberId == parentId)
-            .ToList();
-    }
-
-    /// <summary>
-    /// Adds a family relationship
-    /// </summary>
-    public async Task<bool> AddFamilyRelationshipAsync(int childId, int parentId, string relationship)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-
-        var child = _members.FirstOrDefault(m => m.Id == childId);
-        var parent = _members.FirstOrDefault(m => m.Id == parentId);
-
-        if (child == null || parent == null)
-            return false;
-
-        // Set relationship
-        child.ParentMemberId = parentId;
-        child.ParentMember = parent;
-        child.RelationshipToParent = relationship;
-
-        // Add to parent's children collection
-        if (parent.ChildMembers == null)
-            parent.ChildMembers = new List<Member>();
-
-        if (!parent.ChildMembers.Contains(child))
-            parent.ChildMembers.Add(child);
-
-        return true;
-    }
-
-    /// <summary>
-    /// Removes a family relationship
-    /// </summary>
-    public async Task<bool> RemoveFamilyRelationshipAsync(int childId)
-    {
-        // Simulate async operation
-        await Task.Delay(100);
-
-        var child = _members.FirstOrDefault(m => m.Id == childId);
-        if (child == null || !child.ParentMemberId.HasValue)
-            return false;
-
-        var parentId = child.ParentMemberId.Value;
-        var parent = _members.FirstOrDefault(m => m.Id == parentId);
-
-        // Remove from parent
-        if (parent?.ChildMembers != null)
+        public Task<bool> DeleteAsync(int id)
         {
-            parent.ChildMembers.Remove(child);
+            var member = _members.FirstOrDefault(m => m.Id == id);
+            if (member != null)
+            {
+                _members.Remove(member);
+                _relationships.RemoveAll(r => r.MemberId == id || r.RelatedMemberId == id);
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
         }
 
-        // Clear child's parent reference
-        child.ParentMemberId = null;
-        child.ParentMember = null;
-        child.RelationshipToParent = string.Empty;
+        public Task<List<Member>> SearchAsync(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+                return Task.FromResult(_members.Select(m => m.Clone()).ToList());
 
-        return true;
+            var lowerSearchText = searchText.ToLower();
+            var result = _members
+                .Where(m =>
+                    (m.FirstName?.ToLower().Contains(lowerSearchText) ?? false) ||
+                    (m.LastName?.ToLower().Contains(lowerSearchText) ?? false) ||
+                    (m.CIN?.ToLower().Contains(lowerSearchText) ?? false) ||
+                    (m.Phone?.Contains(lowerSearchText) ?? false) ||
+                    (m.Address?.ToLower().Contains(lowerSearchText) ?? false))
+                .Select(m => m.Clone())
+                .ToList();
+            return Task.FromResult(result);
+        }
+
+        public Task<List<FamilyRelationship>> GetFamilyMembersAsync(int memberId)
+        {
+            var relationships = _relationships
+                .Where(r => r.MemberId == memberId)
+                .Select(r => r.Clone())
+                .ToList();
+            return Task.FromResult(relationships);
+        }
+
+        public Task<bool> UpdateFamilyRelationshipsAsync(int memberId, IEnumerable<FamilyRelationship> relationships)
+        {
+            if (relationships == null) return Task.FromResult(false);
+
+            _relationships.RemoveAll(r => r.MemberId == memberId);
+
+            foreach (var relationship in relationships)
+            {
+                var newRel = relationship.Clone();
+                newRel.Id = _nextRelationshipId++;
+                newRel.MemberId = memberId;
+                _relationships.Add(newRel);
+            }
+            return Task.FromResult(true);
+        }
+
+        public Task<bool> AddFamilyRelationshipAsync(int memberId, int relatedMemberId, string relationshipType)
+        {
+            if (!_members.Any(m => m.Id == memberId) || !_members.Any(m => m.Id == relatedMemberId) || memberId == relatedMemberId)
+                return Task.FromResult(false);
+
+            if (_relationships.Any(r => r.MemberId == memberId && r.RelatedMemberId == relatedMemberId))
+                return Task.FromResult(false);
+
+            var relatedMember = _members.First(m => m.Id == relatedMemberId);
+            _relationships.Add(new FamilyRelationship
+            {
+                Id = _nextRelationshipId++,
+                MemberId = memberId,
+                RelatedMemberId = relatedMemberId,
+                RelationshipType = relationshipType,
+                RelatedMember = relatedMember.Clone()
+            });
+            return Task.FromResult(true);
+        }
+
+        public Task<bool> RemoveFamilyRelationshipAsync(int memberId, int relatedMemberId)
+        {
+            var relationship = _relationships.FirstOrDefault(r =>
+                r.MemberId == memberId && r.RelatedMemberId == relatedMemberId);
+
+            if (relationship != null)
+            {
+                _relationships.Remove(relationship);
+                return Task.FromResult(true);
+            }
+            return Task.FromResult(false);
+        }
     }
 }

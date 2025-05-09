@@ -1,0 +1,190 @@
+<Page x:Class="Khouissi_Caisse.Views.MemberDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Khouissi_Caisse.Views"
+             xmlns:viewModels="clr-namespace:Khouissi_Caisse.ViewModels"
+             xmlns:converters="clr-namespace:Khouissi_Caisse.Converters"
+             FlowDirection="RightToLeft"
+             d:DataContext="{d:DesignInstance Type=viewModels:MemberDetailsViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Title="Member Details">
+    
+    <Page.Resources>
+        <converters:ActiveStatusConverter x:Key="ActiveStatusConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+
+        <!-- Button Styles -->
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="MinWidth" Value="80"/>
+        </Style>
+
+        <!-- Primary Action Button Style -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+            <Setter Property="Background" Value="#28a745"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!-- Secondary Action Button Style -->
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+            <Setter Property="Background" Value="#6c757d"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!-- Info Action Button Style -->
+        <Style x:Key="InfoButtonStyle" TargetType="Button" BasedOn="{StaticResource ActionButtonStyle}">
+            <Setter Property="Background" Value="#17a2b8"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <!-- Label Style -->
+        <Style x:Key="DetailLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+
+        <!-- Value Style -->
+        <Style x:Key="DetailValueStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Page.Resources>
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0 0 0 20">
+            <TextBlock Text="{Binding MemberFullName}" FontSize="24" FontWeight="Bold" Margin="0 0 0 10"/>
+            <Border BorderBrush="#DDDDDD" BorderThickness="0 0 0 1"/>
+        </StackPanel>
+
+        <!-- Member Details -->
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Member Information -->
+                <StackPanel Grid.Column="0" Margin="0 0 20 0">
+                    <Grid Margin="0 0 0 15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- ID -->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="رقم العضوية:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Member.Id}" Margin="0 0 0 10"/>
+
+                        <!-- First Name -->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="الإسم:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Member.FirstName}" Margin="0 0 0 10"/>
+
+                        <!-- Last Name -->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="اللقب:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Member.LastName}" Margin="0 0 0 10"/>
+
+                        <!-- Phone -->
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="الهاتف:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Member.Phone}" Margin="0 0 0 10"/>
+
+                        <!-- Address -->
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="العنوان:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Member.Address}" TextWrapping="Wrap" Margin="0 0 0 10"/>
+
+                        <!-- Birth Date -->
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="تاريخ الميلاد:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Member.BirthDate, StringFormat=dd/MM/yyyy}" Margin="0 0 0 10"/>
+
+                        <!-- Active Status -->
+                        <TextBlock Grid.Row="6" Grid.Column="0" Text="الحالة:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Member.IsActive, Converter={StaticResource ActiveStatusConverter}}" 
+                                   Foreground="{Binding Member.IsActive, Converter={StaticResource ActiveStatusConverter}, ConverterParameter=color}" 
+                                   FontWeight="Bold" Margin="0 0 0 10"/>
+                    </Grid>
+
+                    <!-- Additional Information Section -->
+                    <TextBlock Text="معلومات إضافية" FontSize="18" FontWeight="Bold" Margin="0 20 0 10"/>
+                    <Border BorderBrush="#DDDDDD" BorderThickness="0 0 0 1" Margin="0 0 0 10"/>
+                    
+                    <!-- Family Relationships -->
+                    <TextBlock Text="صلة القرابة" FontSize="16" FontWeight="Bold" Margin="0 0 0 10"/>
+                    <TextBlock Text="{Binding FamilyRelationshipText}" Margin="0 0 0 20" TextWrapping="Wrap"/>
+
+                    <!-- Subscription Status Section -->
+                    <TextBlock Text="حالة الإشتراك" FontSize="18" FontWeight="Bold" Margin="0 20 0 10"/>
+                    <Border BorderBrush="#DDDDDD" BorderThickness="0 0 0 1" Margin="0 0 0 10"/>
+                    
+                    <!-- Subscription Information -->
+                    <Grid Margin="0 0 0 15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Last Payment Date -->
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="آخر دفعة:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastPaymentDate, StringFormat=dd/MM/yyyy}" Margin="0 0 0 10"/>
+
+                        <!-- Subscription Status -->
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="حالة الإشتراك:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SubscriptionStatus}" Margin="0 0 0 10"
+                                   Foreground="{Binding SubscriptionStatusColor}"/>
+
+                        <!-- Amount in Advance -->
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="المبلغ المدفوع مسبقاً:" FontWeight="Bold" Margin="0 0 0 10"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding AdvancePaymentAmount, StringFormat={}{0:N2} د.ج}" Margin="0 0 0 10"/>
+                    </Grid>
+                    
+                    <!-- Notes Section -->
+                    <TextBlock Text="ملاحظات" FontSize="18" FontWeight="Bold" Margin="0 20 0 10"/>
+                    <Border BorderBrush="#DDDDDD" BorderThickness="0 0 0 1" Margin="0 0 0 10"/>
+                    <TextBlock Text="{Binding Member.Notes}" TextWrapping="Wrap" Margin="0 0 0 20"
+                               Foreground="{Binding NotesTextColor}"/>
+                </StackPanel>
+
+                <!-- Member Photo -->
+                <Border Grid.Column="1" Background="#F5F5F5" BorderBrush="#DDDDDD" BorderThickness="1" 
+                        Width="200" Height="200" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Image Source="{Binding MemberPhoto}" Stretch="Uniform" Margin="5"/>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+
+        <!-- Action Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 20 0 0">
+            <Button Content="تعديل" Command="{Binding EditCommand}" Style="{StaticResource PrimaryButtonStyle}" 
+                    Margin="0 0 10 0" Padding="20 10"/>
+            <Button Content="عودة" Command="{Binding BackCommand}" Style="{StaticResource SecondaryButtonStyle}"
+                    Padding="20 10"/>
+        </StackPanel>    </Grid>
+</Page>

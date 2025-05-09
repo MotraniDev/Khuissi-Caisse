@@ -82,4 +82,34 @@ public class Member
     /// Relationship to parent member (e.g., "Son", "Daughter", "Spouse")
     /// </summary>
     public string RelationshipToParent { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Path to the photo of the member
+    /// </summary>
+    public string PhotoPath { get; set; } = string.Empty;
+
+    /// <summary>
+    /// National Identification Number (CIN) of the member
+    /// </summary>
+    public string CIN { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Creates a copy of the current member
+    /// </summary>
+    /// <returns>A new member object with the same properties</returns>
+    public Member Clone()
+    {
+        return new Member
+        {
+            Id = this.Id,
+            FirstName = this.FirstName,
+            LastName = this.LastName,
+            BirthDate = this.BirthDate,
+            Phone = this.Phone,
+            Address = this.Address,
+            PhotoPath = this.PhotoPath,
+            IsActive = this.IsActive,
+            Notes = this.Notes
+        };
+    }
 }

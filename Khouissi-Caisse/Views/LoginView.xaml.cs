@@ -1,13 +1,14 @@
 using Khouissi_Caisse.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace Khouissi_Caisse.Views
 {
     /// <summary>
     /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class LoginView : Page
     {
         private LoginViewModel? _viewModel;
 
@@ -17,9 +18,6 @@ namespace Khouissi_Caisse.Views
         public LoginView()
         {
             InitializeComponent();
-
-            // Get the DataContext as LoginViewModel
-            Loaded += LoginView_Loaded;
         }
 
         private void LoginView_Loaded(object sender, RoutedEventArgs e)

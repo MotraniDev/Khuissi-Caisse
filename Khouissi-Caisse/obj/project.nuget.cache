@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "c4jszFJemrM=",
+  "dgSpecHash": "a6YwOG5w1+U=",
   "success": true,
   "projectFilePath": "C:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lenovo\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\lenovo\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.2\\communitytoolkit.mvvm.8.2.2.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.28\\microsoft.data.sqlite.core.6.0.28.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.28\\microsoft.entityframeworkcore.6.0.28.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.28\\microsoft.entityframeworkcore.abstractions.6.0.28.nupkg.sha512",

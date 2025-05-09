@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Khouissi-Caisse")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute(" ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbb7620211ec547cfa5023040499ee7a7b35c358")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7621f8221e0353ae43c84a94444ab269536ed9ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("Khouissi-Caisse")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Khouissi-Caisse")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
