@@ -61,6 +61,21 @@ public class MockUserService : IUserService
     }
 
     /// <inheritdoc/>
+    public Task<User?> AuthenticateWithPasswordOnlyAsync(string password)
+    {
+        // In a real service, password would be hashed and compared with stored hash
+        var user = _users.FirstOrDefault(u => u.PasswordHash == password);
+
+        if (user != null)
+        {
+            // Update last login time for successful authentication
+            user.LastLogin = DateTime.Now;
+        }
+
+        return Task.FromResult(user);
+    }
+
+    /// <inheritdoc/>
     public Task<bool> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
     {
         var user = _users.FirstOrDefault(u => u.Id == userId);

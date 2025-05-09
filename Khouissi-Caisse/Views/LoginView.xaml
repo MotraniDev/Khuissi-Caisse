@@ -8,7 +8,7 @@
              xmlns:converters="clr-namespace:Khouissi_Caisse.Converters"
              mc:Ignorable="d"
              d:DesignHeight="450"
-                d:DesignWidth="600"
+             d:DesignWidth="600"
              FlowDirection="RightToLeft">
 
         <UserControl.Resources>
@@ -19,53 +19,53 @@
 
                         <!-- Style for TextBoxes -->
                         <Style x:Key="LoginTextBoxStyle"
-                                        TargetType="TextBox">
+                               TargetType="TextBox">
                                 <Setter Property="Margin"
-                                                Value="0,5,0,15"/>
+                                        Value="0,5,0,15"/>
                                 <Setter Property="Padding"
-                                                Value="10,8"/>
+                                        Value="10,8"/>
                                 <Setter Property="FontSize"
-                                                Value="14"/>
+                                        Value="14"/>
                                 <Setter Property="Background"
-                                                Value="#f8f9fa"/>
+                                        Value="#f8f9fa"/>
                                 <Setter Property="BorderBrush"
-                                                Value="#ced4da"/>
+                                        Value="#ced4da"/>
                                 <Setter Property="BorderThickness"
-                                                Value="1"/>
+                                        Value="1"/>
                         </Style>
 
                         <!-- Style for PasswordBox -->
                         <Style x:Key="LoginPasswordBoxStyle"
-                                        TargetType="PasswordBox">
+                               TargetType="PasswordBox">
                                 <Setter Property="Margin"
-                                                Value="0,5,0,15"/>
+                                        Value="0,5,0,15"/>
                                 <Setter Property="Padding"
-                                                Value="10,8"/>
+                                        Value="10,8"/>
                                 <Setter Property="FontSize"
-                                                Value="14"/>
+                                        Value="14"/>
                                 <Setter Property="Background"
-                                                Value="#f8f9fa"/>
+                                        Value="#f8f9fa"/>
                                 <Setter Property="BorderBrush"
-                                                Value="#ced4da"/>
+                                        Value="#ced4da"/>
                                 <Setter Property="BorderThickness"
-                                                Value="1"/>
+                                        Value="1"/>
                         </Style>
 
                         <!-- Style for Buttons -->
                         <Style x:Key="LoginButtonStyle"
-                                        TargetType="Button">
+                               TargetType="Button">
                                 <Setter Property="Padding"
-                                                Value="20,10"/>
+                                        Value="20,10"/>
                                 <Setter Property="Margin"
-                                                Value="5"/>
+                                        Value="5"/>
                                 <Setter Property="MinWidth"
-                                                Value="100"/>
+                                        Value="100"/>
                                 <Setter Property="BorderThickness"
-                                                Value="0"/>
+                                        Value="0"/>
                                 <Setter Property="FontSize"
-                                                Value="14"/>
+                                        Value="14"/>
                                 <Setter Property="Foreground"
-                                                Value="White"/>
+                                        Value="White"/>
                         </Style>
                 </ResourceDictionary>
         </UserControl.Resources>
@@ -76,7 +76,7 @@
                         BorderThickness="1"
                         CornerRadius="8"
                         Width="400"
-                        MaxWidth="90%"
+                        MaxWidth="800"
                         Padding="30">
                         <StackPanel>
                                 <!-- Title -->
@@ -85,20 +85,12 @@
                                            FontWeight="Bold"
                                            Margin="0,0,0,30"
                                            TextAlignment="Center"/>
-
                                 <!-- Error Message -->
                                 <TextBlock Text="{Binding ErrorMessage}"
                                            Foreground="Red"
                                            Margin="0,0,0,15"
                                            TextWrapping="Wrap"
                                            Visibility="{Binding ErrorMessage, Converter={StaticResource StringToVisibilityConverter}}"/>
-
-                                <!-- Username -->
-                                <TextBlock Text="{DynamicResource Username}"
-                                           FontWeight="SemiBold"
-                                           Margin="0,0,0,5"/>
-                                <TextBox Style="{StaticResource LoginTextBoxStyle}"
-                                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
 
                                 <!-- Password -->
                                 <TextBlock Text="{DynamicResource Password}"

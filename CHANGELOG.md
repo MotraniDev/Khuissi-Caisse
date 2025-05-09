@@ -6,6 +6,13 @@ All notable changes to the project will be documented in this file.
 
 ### Added
 
+- feat(login): Simplified to password-only authentication
+  - Modified IUserService to support password-only authentication
+  - Updated MockUserService implementation
+  - Simplified login UI to only show password field
+  - Updated LoginViewModel to handle password-only login flow
+  - Improved focus handling for password input
+
 - feat(login): Implemented login functionality with Arabic UI and RTL support
   - Created LoginView with Arabic UI elements and RTL layout
   - Implemented LoginViewModel with full authentication flow
@@ -13,6 +20,12 @@ All notable changes to the project will be documented in this file.
   - Created value converters (BoolToVisibilityConverter, StringToVisibilityConverter)
   - Added Arabic string resources in App.xaml
   - Set up proper RTL styling with Arabic fonts throughout the application
+
+- feat(core): Implemented core data models and repositories
+  - Created entity models (Member, Subscription, Expense, ApplicationSettings)
+  - Implemented generic repository pattern (IRepository<T> and Repository<T>)
+  - Added specific repositories for each entity with additional methods
+  - Set up database context with relationships between entities
 
 ### Changed
 

@@ -17,6 +17,13 @@ public interface IUserService
     Task<User?> AuthenticateAsync(string username, string password);
 
     /// <summary>
+    /// Authenticates a user with only a password
+    /// </summary>
+    /// <param name="password">The password</param>
+    /// <returns>The authenticated user or null if authentication fails</returns>
+    Task<User?> AuthenticateWithPasswordOnlyAsync(string password);
+
+    /// <summary>
     /// Gets a user by their username
     /// </summary>
     /// <param name="username">The username to search for</param>
