@@ -11,9 +11,7 @@ namespace Khouissi_Caisse.Services;
 /// </summary>
 public class MockUserService : IUserService
 {
-    private readonly List<User> _users;
-
-    public MockUserService()
+    private readonly List<User> _users;    public MockUserService()
     {
         // Initialize with some test users
         _users = new List<User>
@@ -22,7 +20,7 @@ public class MockUserService : IUserService
             {
                 Id = 1,
                 Username = "admin",
-                PasswordHash = "admin", // In a real app, this would be hashed
+                PasswordHash = "123", // Default password for mock login
                 Role = "Admin",
                 FirstName = "مدير",
                 LastName = "النظام",
@@ -33,7 +31,7 @@ public class MockUserService : IUserService
             {
                 Id = 2,
                 Username = "user",
-                PasswordHash = "user", // In a real app, this would be hashed
+                PasswordHash = "123", // Default password for mock login
                 Role = "User",
                 FirstName = "مستخدم",
                 LastName = "عادي",
@@ -58,21 +56,24 @@ public class MockUserService : IUserService
         }
 
         return Task.FromResult(user);
-    }
-
-    /// <inheritdoc/>
+    }    /// <inheritdoc/>
     public Task<User?> AuthenticateWithPasswordOnlyAsync(string password)
     {
-        // In a real service, password would be hashed and compared with stored hash
-        var user = _users.FirstOrDefault(u => u.PasswordHash == password);
-
-        if (user != null)
+        // Check if the password matches the default password "123"
+        if (password == "123")
         {
-            // Update last login time for successful authentication
-            user.LastLogin = DateTime.Now;
+            // Return the first user (admin) for simplicity
+            var user = _users.FirstOrDefault();
+            if (user != null)
+            {
+                // Update last login time for successful authentication
+                user.LastLogin = DateTime.Now;
+                return Task.FromResult<User?>(user);
+            }
         }
-
-        return Task.FromResult(user);
+        
+        // If password doesn't match or no users found
+        return Task.FromResult<User?>(null);
     }
 
     /// <inheritdoc/>

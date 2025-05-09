@@ -6,6 +6,13 @@ All notable changes to the project will be documented in this file.
 
 ### Added
 
+- fix(login): Fixed login functionality with default "123" password
+  - Updated NavigationService to properly set DataContext for views
+  - Enhanced MockUserService to correctly handle default password authentication
+  - Added multiple login triggers (Button click, Enter key) for better UX
+  - Fixed command execution in LoginViewModel
+  - Improved login feedback with diagnostic messages
+
 - feat(login): Simplified to password-only authentication
 
   - Modified IUserService to support password-only authentication

@@ -53,49 +53,53 @@ namespace Khouissi_Caisse.Services
             }            if (_viewModelViewMap.TryGetValue(viewModelName, out Type? viewType) && viewType != null)
             {
                 try
-                {
-                    // Resolve the view using the service provider if it's registered there,
+                {                    // Resolve the view using the service provider if it's registered there,
                     // otherwise, try to activate it directly.
                     // This allows views to have their dependencies injected.
                     object viewInstance = (_serviceProvider.GetService(viewType) ?? Activator.CreateInstance(viewType))!;
 
                     if (viewInstance is Page page)
                     {
-                        // If the view's DataContext is a ViewModel that implements IParameterReceiver (or similar),
-                        // pass the parameter. This is a common pattern.
-                        if (page.DataContext != null && parameter != null)
-                        {
-                            // Example: (page.DataContext as IParameterReceiver)?.SetParameter(parameter);
-                            // For now, we'll assume the ViewModel handles parameter passing if needed,
-                            // perhaps through a constructor or a specific method called after navigation.
-                            // If the ViewModel is resolved via DI, its constructor can take parameters.
-                            // Or, if the ViewModel is set in XAML, we might need a different approach.
+                        // Resolve the corresponding ViewModel for this view
+                        // viewModelName is already the name of the ViewModel type (e.g., "LoginViewModel")
+                        var viewModelType = Type.GetType($"Khouissi_Caisse.ViewModels.{viewModelName}") ?? 
+                            Type.GetType($"Khouissi_Caisse.ViewModels.{viewModelName}, Khouissi-Caisse");
 
-                            // A simple way to pass parameters is to set a property on the ViewModel after it's created.
-                            // This requires the ViewModel to be resolved first.
-                            var viewModel = page.DataContext;
+                        if (viewModelType != null)
+                        {
+                            // Get the ViewModel from the service provider
+                            var viewModel = _serviceProvider.GetService(viewModelType);
+                            
+                            // Set the DataContext of the page to the ViewModel
                             if (viewModel != null)
                             {
-                                // This is a placeholder for a more robust parameter passing mechanism.
-                                // e.g., if ViewModel has a method LoadState(object parameter)
-                                var loadMethod = viewModel.GetType().GetMethod("LoadState"); // Or a specific interface method
-                                if (loadMethod != null && loadMethod.GetParameters().Length == 1)
+                                page.DataContext = viewModel;
+                                
+                                // Handle parameter passing if needed
+                                if (parameter != null)
                                 {
-                                    loadMethod.Invoke(viewModel, new[] { parameter });
-                                }
-                                else
-                                {
-                                    // Attempt to set a property if a method isn't found
-                                    // This is very basic and might not be suitable for all cases.
-                                    var paramProp = viewModel.GetType().GetProperty("NavigationParameter");
-                                    if (paramProp != null && paramProp.CanWrite && parameter != null) // Added null check for parameter
+                                    // Check if the ViewModel has a LoadMemberAsync or LoadState method
+                                    var loadMethod = viewModelType.GetMethod("LoadMemberAsync") ?? 
+                                                    viewModelType.GetMethod("LoadState");
+                                    
+                                    if (loadMethod != null && loadMethod.GetParameters().Length == 1)
                                     {
-                                        paramProp.SetValue(viewModel, parameter);
+                                        loadMethod.Invoke(viewModel, new[] { parameter });
+                                    }
+                                    else
+                                    {
+                                        // Try to set a parameter property
+                                        var paramProp = viewModelType.GetProperty("NavigationParameter");
+                                        if (paramProp != null && paramProp.CanWrite)
+                                        {
+                                            paramProp.SetValue(viewModel, parameter);
+                                        }
                                     }
                                 }
                             }
                         }
-                         _mainFrame.Navigate(page);
+                        
+                        _mainFrame.Navigate(page);
                     }
                     else
                     {

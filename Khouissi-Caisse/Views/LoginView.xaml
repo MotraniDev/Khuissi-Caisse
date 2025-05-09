@@ -79,13 +79,19 @@
                 Width="400"
                 MaxWidth="800"
                 Padding="30">
-            <StackPanel>
-                <!-- Title -->
+            <StackPanel>                <!-- Title -->
                 <TextBlock Text="{DynamicResource Login}"
                            FontSize="24"
                            FontWeight="Bold"
-                           Margin="0,0,0,30"
+                           Margin="0,0,0,15"
                            TextAlignment="Center"/>
+                
+                <!-- Mock login instruction -->
+                <TextBlock Text="للدخول استخدم كلمة المرور الافتراضية"
+                           FontSize="14"
+                           Margin="0,0,0,30"
+                           TextAlignment="Center"
+                           Foreground="#6c757d"/>
                 <!-- Error Message -->
                 <TextBlock Text="{Binding ErrorMessage}"
                            Foreground="Red"
@@ -96,9 +102,16 @@
                 <!-- Password -->
                 <TextBlock Text="{DynamicResource Password}"
                            FontWeight="SemiBold"
-                           Margin="0,0,0,5"/>
-                <PasswordBox x:Name="PasswordBox"
-                             Style="{StaticResource LoginPasswordBoxStyle}"/>
+                           Margin="0,0,0,5"/>                <PasswordBox x:Name="PasswordBox"
+                             Style="{StaticResource LoginPasswordBoxStyle}"
+                             Tag="Default password is 123"
+                             KeyDown="PasswordBox_KeyDown"/>
+                
+                <!-- Password hint -->
+                <TextBlock Text="Default password: 123" 
+                           FontSize="11" 
+                           Margin="5,0,0,10" 
+                           Foreground="#6c757d"/>
 
                 <!-- Remember Me -->
                 <CheckBox Content="{DynamicResource RememberMe}"
@@ -116,13 +129,12 @@
                             Grid.Column="0"
                             Style="{StaticResource LoginButtonStyle}"
                             Background="#6c757d"
-                            Command="{Binding CancelCommand}"/>
-
-                    <Button Content="{DynamicResource Login}"
+                            Command="{Binding CancelCommand}"/>                    <Button Content="{DynamicResource Login}"
                             Grid.Column="1"
                             Style="{StaticResource LoginButtonStyle}"
                             Background="#28a745"
-                            Command="{Binding LoginCommand}"/>
+                            Command="{Binding LoginCommand}"
+                            Click="LoginButton_Click"/>
                 </Grid>
 
                 <!-- Loading Indicator -->

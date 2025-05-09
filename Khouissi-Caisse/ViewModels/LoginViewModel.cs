@@ -76,7 +76,13 @@ namespace Khouissi_Caisse.ViewModels
         public LoginViewModel(IUserService userService)
         {
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
-            LoginCommand = new RelayCommand(async _ => await LoginAsync(), _ => CanLogin());
+            LoginCommand = new RelayCommand(
+                async _ => {
+                    if (CanLogin())
+                        await LoginAsync();
+                },
+                _ => CanLogin()
+            );
             CancelCommand = new RelayCommand(_ => CancelLogin());
         }
 
@@ -92,17 +98,22 @@ namespace Khouissi_Caisse.ViewModels
 
             try
             {
+                // Show that the login function is being called
+                MessageBox.Show($"Attempting to log in with password: {Password}", "Login Attempt", MessageBoxButton.OK, MessageBoxImage.Information);
+                
                 var user = await _userService.AuthenticateWithPasswordOnlyAsync(Password);
 
                 if (user != null)
                 {
                     // Successful login
+                    MessageBox.Show($"Login successful for user: {user.FirstName} {user.LastName}", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     LoginSuccessful?.Invoke(this, user);
                 }
                 else
                 {
                     // Failed login - Use resource key for InvalidCredentials
                     ErrorMessage = Application.Current.Resources["InvalidCredentials"]?.ToString() ?? "Invalid password";
+                    MessageBox.Show("Login failed: Invalid password", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (Exception ex)
