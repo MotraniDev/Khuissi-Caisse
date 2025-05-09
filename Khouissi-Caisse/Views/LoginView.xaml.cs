@@ -17,7 +17,7 @@ namespace Khouissi_Caisse.Views
         public LoginView()
         {
             InitializeComponent();
-            
+
             // Get the DataContext as LoginViewModel
             Loaded += (s, e) =>
             {

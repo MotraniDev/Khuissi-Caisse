@@ -22,7 +22,7 @@ public class StringToVisibilityConverter : IValueConverter
     {
         bool hasValue = !string.IsNullOrWhiteSpace(value as string);
         bool isInverted = IsInvertParameter(parameter);
-        
+
         return (hasValue ^ isInverted) ? Visibility.Visible : Visibility.Collapsed;
     }
 
@@ -36,8 +36,8 @@ public class StringToVisibilityConverter : IValueConverter
 
     private static bool IsInvertParameter(object parameter)
     {
-        return parameter is string paramString && 
-               (paramString.Equals("invert", StringComparison.OrdinalIgnoreCase) || 
+        return parameter is string paramString &&
+               (paramString.Equals("invert", StringComparison.OrdinalIgnoreCase) ||
                 paramString.Equals("reverse", StringComparison.OrdinalIgnoreCase));
     }
 }

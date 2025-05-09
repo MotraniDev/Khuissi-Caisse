@@ -50,8 +50,8 @@ public class BoolToVisibilityConverter : IValueConverter
 
     private static bool IsInvertParameter(object parameter)
     {
-        return parameter is string paramString && 
-               (paramString.Equals("invert", StringComparison.OrdinalIgnoreCase) || 
+        return parameter is string paramString &&
+               (paramString.Equals("invert", StringComparison.OrdinalIgnoreCase) ||
                 paramString.Equals("reverse", StringComparison.OrdinalIgnoreCase));
     }
 }
