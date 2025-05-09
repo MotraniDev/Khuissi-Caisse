@@ -7,6 +7,7 @@ All notable changes to the project will be documented in this file.
 ### Added
 
 - feat(login): Simplified to password-only authentication
+
   - Modified IUserService to support password-only authentication
   - Updated MockUserService implementation
   - Simplified login UI to only show password field
@@ -14,6 +15,7 @@ All notable changes to the project will be documented in this file.
   - Improved focus handling for password input
 
 - feat(login): Implemented login functionality with Arabic UI and RTL support
+
   - Created LoginView with Arabic UI elements and RTL layout
   - Implemented LoginViewModel with full authentication flow
   - Added password security handling for PasswordBox

@@ -40,20 +40,17 @@ public partial class App : Application
     /// Configures the application's dependency injection container
     /// </summary>
     private void ConfigureServices(IServiceCollection services)
-    {
-        // Register services
+    {        // Register services
         services.AddSingleton<IUserService, MockUserService>();
+        services.AddSingleton<IMemberService, MockMemberService>();
 
         // In the future, we'll register other services like this:
-        // services.AddSingleton<IMemberService, MockMemberService>();
         // services.AddSingleton<ISubscriptionService, MockSubscriptionService>();
-        // services.AddSingleton<IExpenseService, MockExpenseService>();
-
-        // Register ViewModels
+        // services.AddSingleton<IExpenseService, MockExpenseService>();        // Register ViewModels
         services.AddTransient<LoginViewModel>();
+        services.AddTransient<MemberListViewModel>();
 
         // In the future, we'll register other ViewModels like this:
-        // services.AddTransient<MemberListViewModel>();
         // services.AddTransient<MemberDetailsViewModel>();
         // services.AddTransient<MemberEditViewModel>();
     }

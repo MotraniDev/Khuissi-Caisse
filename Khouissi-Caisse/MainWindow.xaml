@@ -31,7 +31,7 @@
                         <Setter Property="FontSize"
                                 Value="14"/>
                         <Setter Property="HorizontalContentAlignment"
-                                Value="Right"/>
+                                Value="Left"/>
                         <Setter Property="Template">
                                 <Setter.Value>
                                         <ControlTemplate TargetType="Button">
@@ -60,16 +60,15 @@
                         </Setter>
                 </Style>
         </Window.Resources>
-
         <Grid>
                 <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Navigation Panel -->
                 <Border Background="#2c3e50"
-                        Grid.Column="0">
+                        Grid.Column="1">
                         <Grid>
                                 <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -93,18 +92,30 @@
                                 <ScrollViewer Grid.Row="1"
                                               VerticalScrollBarVisibility="Auto">
                                         <StackPanel>
-                                                <Button Content="{DynamicResource Home}"
-                                                        Style="{StaticResource NavButtonStyle}"/>
-                                                <Button Content="{DynamicResource Members}"
-                                                        Style="{StaticResource NavButtonStyle}"/>
-                                                <Button Content="{DynamicResource Subscriptions}"
-                                                        Style="{StaticResource NavButtonStyle}"/>
-                                                <Button Content="{DynamicResource Expenses}"
-                                                        Style="{StaticResource NavButtonStyle}"/>
-                                                <Button Content="{DynamicResource Reports}"
-                                                        Style="{StaticResource NavButtonStyle}"/>
-                                                <Button Content="{DynamicResource Settings}"
-                                                        Style="{StaticResource NavButtonStyle}"/>
+                                                <Button x:Name="HomeButton"
+                                                        Content="{DynamicResource Home}"
+                                                        Style="{StaticResource NavButtonStyle}"
+                                                        Click="HomeButton_Click"/>
+                                                <Button x:Name="MembersButton"
+                                                        Content="{DynamicResource Members}"
+                                                        Style="{StaticResource NavButtonStyle}"
+                                                        Click="MembersButton_Click"/>
+                                                <Button x:Name="SubscriptionsButton"
+                                                        Content="{DynamicResource Subscriptions}"
+                                                        Style="{StaticResource NavButtonStyle}"
+                                                        Click="SubscriptionsButton_Click"/>
+                                                <Button x:Name="ExpensesButton"
+                                                        Content="{DynamicResource Expenses}"
+                                                        Style="{StaticResource NavButtonStyle}"
+                                                        Click="ExpensesButton_Click"/>
+                                                <Button x:Name="ReportsButton"
+                                                        Content="{DynamicResource Reports}"
+                                                        Style="{StaticResource NavButtonStyle}"
+                                                        Click="ReportsButton_Click"/>
+                                                <Button x:Name="SettingsButton"
+                                                        Content="{DynamicResource Settings}"
+                                                        Style="{StaticResource NavButtonStyle}"
+                                                        Click="SettingsButton_Click"/>
                                         </StackPanel>
                                 </ScrollViewer>
 
@@ -130,9 +141,8 @@
                                 </Border>
                         </Grid>
                 </Border>
-
                 <!-- Content Area -->
-                <Border Grid.Column="1"
+                <Border Grid.Column="0"
                         Background="#ecf0f1"
                         Padding="10">
                         <ContentControl x:Name="MainContent">

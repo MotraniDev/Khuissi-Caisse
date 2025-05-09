@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\Users\lenovo\Documents\src\Khuissi-Caisse\Khouissi-Caisse\obj\Debug\net6.0-windows\
+C:\Users\lenovo\Documents\src\Khuissi-Caisse\Khouissi-Caisse\obj\Debug\net6.0-windows\
 Khouissi_Caisse
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-c:\Users\lenovo\Documents\src\Khuissi-Caisse\Khouissi-Caisse\App.xaml
-21727942632
+C:\Users\lenovo\Documents\src\Khuissi-Caisse\Khouissi-Caisse\App.xaml
+3-401798684
 
-13-1224120766
-196-1306427238
-MainWindow.xaml;Views\LoginView.xaml;
+30831569413
+216-896626730
+MainWindow.xaml;Views\LoginView.xaml;Views\MemberListView.xaml;
 
 False
 

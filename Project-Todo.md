@@ -21,29 +21,29 @@ This file tracks the progress of development tasks for the نظام إدارة �
 
 ## Phase 2: Core Data Models & Repositories
 
-- [ ] Implement Member entity model
-  - [ ] Basic properties (Name, surname, birth date, phone, address, photo).
-  - [ ] Family relationship linking capability.
-- [ ] Implement Subscription entity model
-  - [ ] Monthly payment tracking.
-  - [ ] Default amount.
-  - [ ] Advance payment support.
-- [ ] Implement Expense entity model
-  - [ ] Amount, beneficiary, purpose.
+- [x] Implement Member entity model
+  - [x] Basic properties (Name, surname, birth date, phone, address, photo).
+  - [x] Family relationship linking capability.
+- [x] Implement Subscription entity model
+  - [x] Monthly payment tracking.
+  - [x] Default amount.
+  - [x] Advance payment support.
+- [x] Implement Expense entity model
+  - [x] Amount, beneficiary, purpose.
 - [x] Implement User entity model
   - [x] Username, password hash, role.
-- [ ] Implement ApplicationSettings entity model
-  - [ ] Default subscription amount.
-  - [ ] Backup settings.
-- [ ] Create base Repository interface and implementation
-  - [ ] Generic `IRepository<T>` interface.
-  - [ ] Base `Repository<T>` implementation.
-- [ ] Implement specific repositories
-  - [ ] `MemberRepository`.
-  - [ ] `SubscriptionRepository`.
-  - [ ] `ExpenseRepository`.
-  - [ ] `UserRepository`.
-  - [ ] `ApplicationSettingsRepository`.
+- [x] Implement ApplicationSettings entity model
+  - [x] Default subscription amount.
+  - [x] Backup settings.
+- [x] Create base Repository interface and implementation
+  - [x] Generic `IRepository<T>` interface.
+  - [x] Base `Repository<T>` implementation.
+- [x] Implement specific repositories
+  - [x] `MemberRepository`.
+  - [x] `SubscriptionRepository`.
+  - [x] `ExpenseRepository`.
+  - [x] `UserRepository`.
+  - [x] `ApplicationSettingsRepository`.
 
 ## Phase 3: Business Services
 

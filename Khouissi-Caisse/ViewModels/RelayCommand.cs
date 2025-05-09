@@ -39,20 +39,16 @@ public class RelayCommand : ICommand
     public bool CanExecute(object? parameter)
     {
         return _canExecute == null || _canExecute(parameter);
-    }
-
-    /// <summary>
-    /// Executes the command
-    /// </summary>
-    /// <param name="parameter">Parameter for the command</param>
+    }    /// <summary>
+         /// Executes the command
+         /// </summary>
+         /// <param name="parameter">Parameter for the command</param>
     public void Execute(object? parameter)
     {
         _execute(parameter);
-    }
-
-    /// <summary>
-    /// Raises the CanExecuteChanged event
-    /// </summary>
+    }    /// <summary>
+         /// Raises the CanExecuteChanged event to force a CanExecute update
+         /// </summary>
     public void RaiseCanExecuteChanged()
     {
         CommandManager.InvalidateRequerySuggested();
