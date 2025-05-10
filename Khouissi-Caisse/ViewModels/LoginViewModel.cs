@@ -12,11 +12,9 @@ namespace Khouissi_Caisse.ViewModels
     /// </summary>
     public class LoginViewModel : ViewModelBase
     {
-        private readonly IUserService _userService;
-        private string _password = string.Empty;
+        private readonly IUserService _userService;        private string _password = string.Empty;
         private string _errorMessage = string.Empty;
         private bool _isLoading;
-        private bool _rememberMe;
 
         /// <summary>
         /// Password for login
@@ -43,15 +41,6 @@ namespace Khouissi_Caisse.ViewModels
         {
             get => _isLoading;
             set => SetProperty(ref _isLoading, value);
-        }
-
-        /// <summary>
-        /// Indicates if user wants to be remembered
-        /// </summary>
-        public bool RememberMe
-        {
-            get => _rememberMe;
-            set => SetProperty(ref _rememberMe, value);
         }
 
         /// <summary>

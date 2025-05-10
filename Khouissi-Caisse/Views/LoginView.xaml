@@ -106,17 +106,11 @@
                              Style="{StaticResource LoginPasswordBoxStyle}"
                              Tag="Default password is 123"
                              KeyDown="PasswordBox_KeyDown"/>
-                
-                <!-- Password hint -->
+                  <!-- Password hint -->
                 <TextBlock Text="Default password: 123" 
                            FontSize="11" 
-                           Margin="5,0,0,10" 
+                           Margin="5,0,0,20" 
                            Foreground="#6c757d"/>
-
-                <!-- Remember Me -->
-                <CheckBox Content="{DynamicResource RememberMe}"
-                          IsChecked="{Binding RememberMe}"
-                          Margin="0,0,0,20"/>
 
                 <!-- Buttons -->
                 <Grid>
@@ -134,14 +128,7 @@
                             Style="{StaticResource LoginButtonStyle}"
                             Background="#28a745"
                             Command="{Binding LoginCommand}"
-                            Click="LoginButton_Click"/>
-                </Grid>
-
-                <!-- Loading Indicator -->
-                <ProgressBar IsIndeterminate="True"
-                             Height="5"
-                             Margin="0,20,0,0"
-                             Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                            Click="LoginButton_Click"/>                </Grid>
             </StackPanel>
         </Border>
     </Grid>
