@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj": {}
+    "c:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj": {
+    "c:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj",
+        "projectUniqueName": "c:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj",
         "projectName": "Khouissi-Caisse",
-        "projectPath": "C:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj",
+        "projectPath": "c:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\Khouissi-Caisse.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\obj\\",
+        "outputPath": "c:\\Users\\lenovo\\Documents\\src\\Khuissi-Caisse\\Khouissi-Caisse\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

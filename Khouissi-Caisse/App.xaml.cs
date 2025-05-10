@@ -68,12 +68,36 @@ public partial class App : Application
         services.AddTransient<MemberDetailsViewModel>();
         services.AddTransient<MemberEditViewModel>();
 
+        services.AddSingleton<MainWindow>();
+        services.AddSingleton<MainViewModel>();
+
+        services.AddTransient<LoginView>();
+        services.AddTransient<LoginViewModel>();
+
+        services.AddTransient<MemberListView>();
+        services.AddTransient<MemberListViewModel>();
+
+        services.AddTransient<MemberEditView>();
+        services.AddTransient<MemberEditViewModel>();
+
+        services.AddTransient<HomeView>(); // Add this
+        services.AddTransient<HomeViewModel>(); // Add this
+
         // In the future, we'll register other services like this:
         // services.AddSingleton<IExpenseService, MockExpenseService>();
 
         // In the future, we'll register other ViewModels like this:
         // services.AddTransient<MemberDetailsViewModel>();
         // services.AddTransient<MemberEditViewModel>();
+
+        _serviceProvider = services.BuildServiceProvider();
+
+        // Register Views with NavigationService
+        var navigationService = _serviceProvider.GetRequiredService<NavigationService>();
+        navigationService.RegisterView<LoginView, LoginViewModel>();
+        navigationService.RegisterView<MemberListView, MemberListViewModel>();
+        navigationService.RegisterView<MemberEditView, MemberEditViewModel>();
+        navigationService.RegisterView<HomeView, HomeViewModel>(); // Add this
     }
 }
 

@@ -235,4 +235,21 @@ public partial class MainWindow : Window
     {
         _navigationService.NavigateTo(nameof(MemberListViewModel));
     }
+
+    private void OnLoginSuccessful(object? sender, User e)
+    {
+        _currentUser = e;
+        UpdateLoginState();
+        _navigationService.NavigateTo(nameof(HomeView)); // Changed from MemberListView
+        LoginButton.Content = "Logout";
+        LoginButton.Tag = "Logout";
+
+        HomeButton.Visibility = Visibility.Visible;
+        MembersButton.Visibility = Visibility.Visible;
+        SubscriptionsButton.Visibility = Visibility.Visible;
+        ExpensesButton.Visibility = Visibility.Visible;
+        ReportsButton.Visibility = Visibility.Visible;
+        SettingsButton.Visibility = Visibility.Visible;
+    }
+
 }
