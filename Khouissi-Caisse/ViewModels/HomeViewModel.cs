@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using Khouissi_Caisse.Models; // Assuming you might add some summary data models later
+using Khouissi_Caisse.Properties;
 
 namespace Khouissi_Caisse.ViewModels
 {
@@ -13,10 +14,9 @@ namespace Khouissi_Caisse.ViewModels
 
         // Placeholder for future summary data
         // public ObservableCollection<SummaryItem> SummaryItems { get; }
-        
-        public HomeViewModel()
+          public HomeViewModel()
         {
-            WelcomeMessage = "مرحبًا بك في نظام إدارة الصندوق"; // Default welcome message in Arabic
+            WelcomeMessage = Resources.WelcomeMessageDefault; // Using localized welcome message
 
             // SummaryItems = new ObservableCollection<SummaryItem>();
             // LoadSummaryData();

@@ -3,7 +3,8 @@
 ## Working Features
 - Basic application structure is in place
 - Home view with welcome message (Arabic)
-- Resource handling for localization (initial setup)
+- Resource handling for localization (properly configured)
+- Arabic strings showing correctly in the UI
 
 ## In Progress
 - Login functionality
@@ -19,9 +20,9 @@
 - Complete localization for all UI elements
 
 ## Known Issues
-- Resource file integration needs to be properly configured for localization
-  - The Resources.resx file exists but Resources.Designer.cs is empty, needs proper configuration
-  - Currently using hardcoded strings as a workaround
+- Resource file integration has been implemented but may need refinement
+  - Resources.resx and Resources.Designer.cs are now properly configured
+  - Proper resource usage is now implemented in HomeViewModel
 - Need to ensure proper RTL layout across all views
 - Validation for Arabic input in forms
 - Serilog integration to be finalized
