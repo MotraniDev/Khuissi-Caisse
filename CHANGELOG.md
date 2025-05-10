@@ -15,6 +15,11 @@ All notable changes to the project will be documented in this file.
 
 - feat(login): Simplified to password-only authentication
 
+- refactor(login): Simplified login view
+  - Removed "Remember Me" option from the login view
+  - Removed loading indicator from the login view
+  - Simplified LoginViewModel by removing RememberMe property
+
   - Modified IUserService to support password-only authentication
   - Updated MockUserService implementation
   - Simplified login UI to only show password field
