@@ -6,6 +6,12 @@ All notable changes to the project will be documented in this file.
 
 ### Added
 
+- fix(home): Fixed build error in HomeViewModel
+  - Fixed constructor syntax error in HomeViewModel.cs
+  - Removed dependency on non-existent Properties.Resources
+  - Added welcome message in Arabic directly in the code
+  - Added WelcomeMessageDefault to Resources.resx for future localization
+
 - fix(login): Fixed login functionality with default "123" password
   - Updated NavigationService to properly set DataContext for views
   - Enhanced MockUserService to correctly handle default password authentication
